@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+            public class PayrollScanner {
+                public static void main(String[] args) {
+                    Scanner sc = new Scanner(System.in);
+
+                    // Prompt user for input
+                    System.out.print("Enter hourly pay rate (Php): ");
+                    double rate = sc.nextDouble();
+
+                    System.out.print("Enter hours worked: ");
+                    double hours = sc.nextDouble();
+
+                    // Compute gross pay
+                    double grossPay = rate * hours;
+                    double taxRate;
+                    // Determine withholding tax rate based on gross pay
+                    if (grossPay <= 2000) {
+                        taxRate = 0.10;
+                    } else if (grossPay <= 4000) {
+                        taxRate = 0.12;
+        } else if (grossPay <= 10000) {
+            taxRate = 0.15;
+        } else {
+            taxRate = 0.20;
+        }
+
+        // Compute withholding tax and net pay
+        double withholdingTax = grossPay * taxRate;
+        double netPay = grossPay - withholdingTax;
+
+        // Display results
+        System.out.println("\n--- Payroll Summary ---");
+        System.out.printf("Gross Pay: Php %.2f%n", grossPay);
+        System.out.printf("Withholding Tax (%.0f%%): Php %.2f%n", taxRate * 100, withholdingTax);
+        System.out.printf("Net Pay: Php %.2f%n", netPay);
+
+        sc.close();
+    }
+}
